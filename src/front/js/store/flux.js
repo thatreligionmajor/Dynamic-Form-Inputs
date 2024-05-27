@@ -5,13 +5,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 			recipes: [
 				{
 					title: "Recipe Name (TM)",
-					description: "white",
-					initial: "white"
+					description: "a very good recipe",
+					ingredient: "sugar"
 				},
 				{
 					title: "SECOND",
-					description: "white",
-					initial: "white"
+					description: "a very okay recipe",
+					ingredient: "flour"
 				}
 			]
 		},
