@@ -1,26 +1,53 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 
-export const Home = () => {
-	const { store, actions } = useContext(Context);
 
-	return (
-		<div className="text-center mt-5">
-			<h1>Hello Rigo!!</h1>
-			<p>
-				<img src={rigoImageUrl} />
-			</p>
-			<div className="alert alert-info">
-				{store.message || "Loading message from the backend (make sure your python backend is running)..."}
+export const Home = () => {
+	
+	const { store, actions } = useContext(Context);
+	
+	const [val,setVal]=useState([]);
+
+	const handleAdd=()=>{
+       const abc=[...val,[]]
+       setVal(abc)
+    }
+
+    const handleChange=(onChangeValue,i)=>{
+		const inputdata=[...val]
+		inputdata[i]=onChangeValue.target.value;
+		setVal(inputdata)
+    }
+
+    const handleDelete=(i)=>{
+       const deletVal=[...val]
+       deletVal.splice(i,1)
+       setVal(deletVal)  
+    }
+
+    console.log(val,"data-")
+
+	return(
+    <>
+	<div className="container">
+		<div className="row d-flex align-items-center justify-content-center">
+			<div className="col-4">
+				<button onClick={()=>handleAdd()} className="btn btn-primary margin-auto">Add</button>
+				{val.map((data,i)=>{
+					return (
+						<>						
+							<div class="input-group mb-3">
+									<input value={data} onChange={e=>handleChange(e,i)} className="form-control" />
+									<button onClick={()=>handleDelete(i)} className="btn btn-warning">x</button>
+							</div>
+						</>
+					)
+				})}
 			</div>
-			<p>
-				This boilerplate comes with lots of documentation:{" "}
-				<a href="https://start.4geeksacademy.com/starters/react-flask">
-					Read documentation
-				</a>
-			</p>
 		</div>
-	);
+	</div>
+    </>
+);
 };
