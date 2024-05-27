@@ -34,17 +34,22 @@ export const Home = () => {
 	<div className="container">
 		<div className="row d-flex align-items-center justify-content-center">
 			<div className="col-4">
-				<button onClick={()=>handleAdd()} className="btn btn-primary margin-auto">Add</button>
-				{val.map((data,i)=>{
-					return (
-						<>						
-							<div class="input-group mb-3">
-									<input value={data} onChange={e=>handleChange(e,i)} className="form-control" />
-									<button onClick={()=>handleDelete(i)} className="btn btn-warning">x</button>
-							</div>
-						</>
-					)
-				})}
+				<div className="d-flex justify-content-center">
+					<button onClick={()=>handleAdd()} className="btn btn-primary my-3">Add</button>
+				</div>
+				<div>
+					{val.map((data,i)=>{
+						return (
+							<>						
+								<div class="input-group mb-3">
+										<input value={data} onChange={e=>handleChange(e,i)} className="form-control" />
+										<button onClick={()=>handleDelete(i)} className="btn btn-warning">x</button>
+								</div>
+							</>
+						)
+					})}
+
+				</div>
 			</div>
 		</div>
 	</div>
